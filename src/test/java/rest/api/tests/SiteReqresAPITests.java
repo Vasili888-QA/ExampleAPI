@@ -4,6 +4,7 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import rest.api.helpers.AllureRestAssuredFilter;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
@@ -16,6 +17,7 @@ public class SiteReqresAPITests extends TestBase{
     @DisplayName("Create User")
     public void createUserTest() {
         given()
+                .filter(AllureRestAssuredFilter.withCustomTemplates())
                 .contentType(JSON)
                 .body("{\"name\": \"vasili\", \"job\": \"AQA-Team\"}")
                 .when()
@@ -31,6 +33,7 @@ public class SiteReqresAPITests extends TestBase{
     @DisplayName("Update User")
     public void updateUserTest() {
         given()
+                .filter(AllureRestAssuredFilter.withCustomTemplates())
                 .contentType(JSON)
                 .body("{\"name\": \"vasili\", \"job\": \"AQA-Team\"}")
                 .when()
@@ -46,6 +49,7 @@ public class SiteReqresAPITests extends TestBase{
     @DisplayName("Delete User")
     public void deleteUserTest() {
         given()
+                .filter(AllureRestAssuredFilter.withCustomTemplates())
                 .when()
                 .delete(("https://reqres.in/api/users/2"))
                 .then()
@@ -56,6 +60,7 @@ public class SiteReqresAPITests extends TestBase{
     @DisplayName("Login Test")
     public void loginTest() {
         given()
+                .filter(AllureRestAssuredFilter.withCustomTemplates())
                 .contentType(JSON)
                 .body("{\"email\": \"eve.holt@reqres.in\", \"password\": \"cityslicka\"}")
                 .when()
@@ -69,6 +74,7 @@ public class SiteReqresAPITests extends TestBase{
     @DisplayName("Get list")
     void getListTest() {
         given()
+                .filter(AllureRestAssuredFilter.withCustomTemplates())
                 .get("https://reqres.in/api/unknown")
                 .then()
                 .statusCode(200)
