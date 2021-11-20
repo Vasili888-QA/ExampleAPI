@@ -1,5 +1,7 @@
 package rest.api.tests;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import rest.api.lombok.LombokUserData;
@@ -11,6 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static rest.api.Specs.request;
 import static rest.api.Specs.responseSpec;
 
+@Epic("REST-API Tests")
+@Feature("API tests with Lombok and Groovy")
 public class APITestsWithSpecsAndLombok {
     @Test
     @DisplayName("Get list")
@@ -29,6 +33,7 @@ public class APITestsWithSpecsAndLombok {
     }
 
     @Test
+    @DisplayName("Check User with Lombok")
     void checkUserWithLombok() {
         LombokUserData data = given()
                 .spec(request)
@@ -45,6 +50,7 @@ public class APITestsWithSpecsAndLombok {
     }
 
     @Test
+    @DisplayName("Check User data")
     public void checkUserData() {
         given()
                 .spec(request)
